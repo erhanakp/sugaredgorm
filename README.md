@@ -18,6 +18,12 @@ Now you can add this package via;
 go get -u github.com/erhanakp/sugaredgorm
 ```
 
+Install godoc for documentation;
+
+```bash
+go install golang.org/x/tools/cmd/godoc@latest
+```
+
 ---
 
 ## Usage:
