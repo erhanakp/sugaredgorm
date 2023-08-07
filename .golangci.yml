@@ -4,17 +4,6 @@ run:
   go: '1.17'
 
 linters-settings:
-  wrapcheck:
-    ignoreSigs:
-      - .Errorf(
-      - errors.New(
-      - errors.Unwrap(
-      - .Wrap(
-      - .Wrapf(
-      - .WithMessage(
-      - .WithMessagef(
-      - .WithStack(
-      - .WrapError(
   revive:
     ignore-generated-header: true
     severity: warning

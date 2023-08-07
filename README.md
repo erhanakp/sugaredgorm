@@ -20,28 +20,6 @@ go get github.com/erhanakp/sugaredgorm
 
 ---
 
-## GolangCI Linter Settings
-
-You can add these lines to your existing linter yaml if you use `wrapcheck` linter:
-
-```yaml
-linters-settings:
-  wrapcheck:
-    ignoreSigs:
-      - .Errorf(
-      - errors.New(
-      - errors.Unwrap(
-      - .Wrap(
-      - .Wrapf(
-      - .WithMessage(
-      - .WithMessagef(
-      - .WithStack(
-      - .WrapError(
-```
-
----
-
-
 ## Usage:
   
 
