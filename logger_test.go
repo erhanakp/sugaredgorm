@@ -14,6 +14,8 @@ import (
 	gormlogger "gorm.io/gorm/logger"
 )
 
+var errTest = errors.New("test error")
+
 func TestLogMode(t *testing.T) {
 	var buf bytes.Buffer
 	sink := zapcore.AddSync(&buf)
@@ -112,7 +114,7 @@ func TestLogger_Error(t *testing.T) {
 	}
 }
 
-func TestLogger_TraceNil(t *testing.T) {
+func TestLogger_TraceNil(_ *testing.T) {
 	config := sugaredgorm.Config{}
 	logger := sugaredgorm.New(nil, config)
 
@@ -145,8 +147,7 @@ func TestLogger_TraceError(t *testing.T) {
 	fakeFunc := func() (string, int64) {
 		return "SELECT * FROM table", 5
 	}
-	err := errors.New("test error")
-	logger.Trace(context.Background(), begin, fakeFunc, err)
+	logger.Trace(context.Background(), begin, fakeFunc, errTest)
 
 	capturedOutput := buf.String()
 	if !strings.Contains(capturedOutput, "test error") {
@@ -179,8 +180,7 @@ func TestLogger_TraceErrorNoRow(t *testing.T) {
 	fakeFunc := func() (string, int64) {
 		return "SELECT * FROM table", -1
 	}
-	err := errors.New("test error")
-	logger.Trace(context.Background(), begin, fakeFunc, err)
+	logger.Trace(context.Background(), begin, fakeFunc, errTest)
 
 	capturedOutput := buf.String()
 	if !strings.Contains(capturedOutput, "test error") {
@@ -345,8 +345,7 @@ func TestLogger_TraceWithColorfulError(t *testing.T) {
 	fakeFunc := func() (string, int64) {
 		return "SELECT * FROM table", 5
 	}
-	err := errors.New("test error")
-	logger.Trace(context.Background(), begin, fakeFunc, err)
+	logger.Trace(context.Background(), begin, fakeFunc, errTest)
 
 	capturedOutput := buf.String()
 	if !strings.Contains(capturedOutput, sugaredgorm.MagentaBold+"test error") {

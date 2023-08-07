@@ -11,10 +11,10 @@ import (
 	"gorm.io/gorm/utils"
 )
 
-// ErrRecordNotFound record not found error
+// ErrRecordNotFound record not found error for gorm.
 var ErrRecordNotFound = errors.New("record not found")
 
-// Colors
+// Colors for logger.
 const (
 	Reset       = "\033[0m"
 	Red         = "\033[31m"
@@ -30,7 +30,7 @@ const (
 	YellowBold  = "\033[33;1m"
 )
 
-// Config logger config
+// Config logger config for gorm.
 type Config struct {
 	SlowThreshold             time.Duration
 	Colorful                  bool
@@ -38,7 +38,7 @@ type Config struct {
 	ParameterizedQueries      bool
 }
 
-// Interface logger interface
+// Logger interface for gorm logger.
 type Logger interface {
 	LogMode(gormlogger.LogLevel) gormlogger.Interface
 	Info(context.Context, string, ...interface{})
@@ -47,7 +47,7 @@ type Logger interface {
 	Trace(ctx context.Context, begin time.Time, fc func() (sql string, rowsAffected int64), err error)
 }
 
-// New initialize logger
+// New initialize logger.
 func New(sugerLogger *zap.SugaredLogger, config Config) Logger {
 	var (
 		infoStr      = "%s\n[info] "
@@ -94,29 +94,29 @@ func (l *logger) LogMode(_ gormlogger.LogLevel) gormlogger.Interface {
 	return l
 }
 
-// Info print info
+// Info print info.
 func (l logger) Info(_ context.Context, msg string, data ...interface{}) {
 	if l.logger != nil {
 		l.logger.Infow(msg, data...)
 	}
 }
 
-// Warn print warn messages
-func (l logger) Warn(ctx context.Context, msg string, data ...interface{}) {
+// Warn print warn messages.
+func (l logger) Warn(_ context.Context, msg string, data ...interface{}) {
 	if l.logger != nil {
 		l.logger.Warnw(msg, data...)
 	}
 }
 
-// Error print error messages
-func (l logger) Error(ctx context.Context, msg string, data ...interface{}) {
+// Error print error messages.
+func (l logger) Error(_ context.Context, msg string, data ...interface{}) {
 	if l.logger != nil {
 		l.logger.Errorw(msg, data...)
 	}
 }
 
-// Trace print sql message
-func (l logger) Trace(ctx context.Context, begin time.Time, fc func() (string, int64), err error) {
+// Trace print sql message.
+func (l logger) Trace(_ context.Context, begin time.Time, fc func() (string, int64), err error) {
 	if l.logger == nil {
 		return
 	}
