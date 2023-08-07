@@ -5,10 +5,12 @@
 ![Go Build Status](https://github.com/erhanakp/sugaredgorm/actions/workflows/go-test.yml/badge.svg)
 ![GolangCI-Lint Status](https://github.com/erhanakp/sugaredgorm/actions/workflows/go-lint.yml/badge.svg)
 [![codecov](https://codecov.io/gh/erhanakp/sugaredgorm/branch/main/graph/badge.svg?token=BTVK8VKVZM)](https://codecov.io/gh/erhanakp/sugaredgorm)
+![Powered by Rake](https://img.shields.io/badge/powered_by-rake-blue?logo=ruby)
+
 
 # Sugared Gorm
 
-A wrapper for Gorm logger for structured logging. It's using sugared logger of [zap]
+A wrapper for the Gorm logger which utilizes the sugared logger from [zap].
 
 ## Installation
 
@@ -45,7 +47,6 @@ rake doc[port]          # run doc server
 rake lint               # run golangci-lint
 rake publish[revision]  # publish new version of the library, default is: patch
 rake test               # run tests
-
 ```
 
 ---
