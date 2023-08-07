@@ -5,15 +5,23 @@
 ![Go Build Status](https://github.com/erhanakp/sugaredgorm/actions/workflows/go-test.yml/badge.svg)
 ![GolangCI-Lint Status](https://github.com/erhanakp/sugaredgorm/actions/workflows/go-lint.yml/badge.svg)
 [![codecov](https://codecov.io/gh/erhanakp/sugaredgorm/branch/main/graph/badge.svg?token=BTVK8VKVZM)](https://codecov.io/gh/erhanakp/sugaredgorm)
+![Powered by Rake](https://img.shields.io/badge/powered_by-rake-blue?logo=ruby)
+
 
 # Sugared Gorm
 
+<<<<<<< HEAD
 Custom GORM logger implementation enhanced with SugarLogger for improved log level management and standardized log outputs.
 
 # Features
 - Integrate GORM database logging with the powerful SugarLogger library.
 - Easily manage log levels and control verbosity for debugging.
 - Standardized and customizable log outputs for better readability and analysis.
+||||||| e33d000bb60e
+A wrapper for Gorm logger for structured logging. It's using sugared logger of [zap]
+=======
+A wrapper for the Gorm logger which utilizes the sugared logger from [zap].
+>>>>>>> d4623d9f3b0a8e606c50221a2558a84e43794e73
 
 ## Installation
 
@@ -62,7 +70,6 @@ rake doc[port]          # run doc server
 rake lint               # run golangci-lint
 rake publish[revision]  # publish new version of the library, default is: patch
 rake test               # run tests
-
 ```
 
 ---
