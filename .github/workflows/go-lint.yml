@@ -1,6 +1,5 @@
 name: Golang CI Linter
 on:
-  push:
   pull_request:
 
 concurrency:

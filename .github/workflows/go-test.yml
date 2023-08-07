@@ -1,7 +1,11 @@
 name: Run go tests
 on:
-  push:
   pull_request:
+  push:
+    branches:
+      - main
+    tags-ignore:
+      - '**'
 
 concurrency:
   group: golang-test-${{ github.event.pull_request.number || github.ref }}
