@@ -29,10 +29,7 @@ task :is_repo_clean do
     match = /current_version = (\d+).(\d+).(\d+)/.match(data)
     "#{match[1]}.#{match[2]}.#{match[3]}"
   end
-    
-  desc "default task"
-  task :default => [:run_server]
-  
+     
   desc "run tests"
   task :test do
     system "go test -p 1 -v -race ./..."
@@ -49,19 +46,13 @@ task :is_repo_clean do
     system "bumpversion #{args.revision}"
   end
   
-  DOCS = [
-    'logging',
-  ]
+  PACKAGE_NAME = "github.com/erhanakp/sugaredgorm"
   desc 'run doc server'
   task :doc, [:port] => [:has_godoc] do |_, args|
     args.with_defaults(port: 9009)
   
-    puts "running doc server at \e[33m0.0.0.0:#{args.port}\e[0m\n"
-    puts "available docs are:\n\n#{DOCS.map(&proc{|p| "-> github.com/erhanakp/sugaredgorm/#{p}"}).join('\n')}"
-    puts "\n"
-    DOCS.each do |package|
-      puts "\t\e[33mhttp://localhost:#{args.port}/pkg/github.com/erhanakp/sugaredgorm/#{package}\e[0m"
-    end
+    puts "running doc server at \e[33m:#{args.port}\e[0m\n"
+    puts "\t\e[33mhttp://localhost:#{args.port}/pkg/#{PACKAGE_NAME}/\e[0m"
     puts "\n"
   
     system "godoc -http=:#{args.port}"

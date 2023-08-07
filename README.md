@@ -15,36 +15,35 @@ A wrapper for Gorm logger for structured logging. It's using sugared logger of [
 Now you can add this package via;
 
 ```bash
-go get github.com/erhanakp/sugaredgorm
+go get -u github.com/erhanakp/sugaredgorm
 ```
 
 ---
 
 ## Usage:
   
-
 ```go
 sugaredLogger := sugaredgorm.New(sugerlogger)
 gormDB, _ := gorm.Open(postgres.New(postgres.Config{}), &gorm.Config{Logger: sugaredLogger})
 ```
 
 ---
+
 ## Rake Tasks
 
 ```bash
 rake -T
 
 rake bump[revision]     # bump version, default is: patch
-rake default            # default task
 rake doc[port]          # run doc server
-rake mockery            # run mockery
+rake lint               # run golangci-lint
 rake publish[revision]  # publish new version of the library, default is: patch
 rake test               # run tests
+
 ```
 
 ---
 
- 
 ## Contributor(s)
 
 * [Erhan Akpınar](https://github.com/erhanakp) - Creator, maintainer
