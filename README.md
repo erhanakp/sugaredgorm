@@ -8,7 +8,12 @@
 
 # Sugared Gorm
 
-A wrapper for Gorm logger for structured logging. It's using sugared logger of [zap]
+Custom GORM logger implementation enhanced with SugarLogger for improved log level management and standardized log outputs.
+
+# Features
+- Integrate GORM database logging with the powerful SugarLogger library.
+- Easily manage log levels and control verbosity for debugging.
+- Standardized and customizable log outputs for better readability and analysis.
 
 ## Installation
 
@@ -29,8 +34,20 @@ go install golang.org/x/tools/cmd/godoc@latest
 ## Usage:
   
 ```go
-sugaredLogger := sugaredgorm.New(sugerlogger)
-gormDB, _ := gorm.Open(postgres.New(postgres.Config{}), &gorm.Config{Logger: sugaredLogger})
+	zap := zap.NewExample()
+
+	gormLoggerValue := sugaredgorm.New(zap.Sugar(), sugaredgorm.Config{
+		SlowThreshold:             200 * time.Millisecond,
+		Colorful:                  true,
+		IgnoreRecordNotFoundError: true,
+		ParameterizedQueries:      true,
+	})
+
+	_, err := gorm.Open(postgres.New(postgres.Config{
+		DSN: "host=localhost",
+	}), &gorm.Config{
+		Logger: gormLoggerValue,
+	})
 ```
 
 ---
