@@ -49,12 +49,6 @@ task :is_repo_clean do
     system "bumpversion #{args.revision}"
   end
   
-  desc "run mockery"
-  task :mockery do
-    rm_rf %w(mocks)
-    system "mockery --recursive --inpackage --keeptree --all --output ./mocks --case=underscore --log-level=error"
-  end
-  
   DOCS = [
     'logging',
   ]
@@ -63,10 +57,10 @@ task :is_repo_clean do
     args.with_defaults(port: 9009)
   
     puts "running doc server at \e[33m0.0.0.0:#{args.port}\e[0m\n"
-    puts "available docs are:\n\n#{DOCS.map(&proc{|p| "-> github.com/deliveryhero/honeylogger/#{p}"}).join('\n')}"
+    puts "available docs are:\n\n#{DOCS.map(&proc{|p| "-> github.com/erhanakp/sugaredgorm/#{p}"}).join('\n')}"
     puts "\n"
     DOCS.each do |package|
-      puts "\t\e[33mhttp://localhost:#{args.port}/pkg/github.com/deliveryhero/honeylogger/#{package}\e[0m"
+      puts "\t\e[33mhttp://localhost:#{args.port}/pkg/github.com/erhanakp/sugaredgorm/#{package}\e[0m"
     end
     puts "\n"
   
@@ -88,7 +82,7 @@ task :is_repo_clean do
     puts "[->] pushing \e[33m#{current_git_tag}\e[0m to remote"
     system %{
       git push origin #{current_git_tag} &&
-      go list -m github.com:deliveryhero/honeylogger@#{current_git_tag} &&
+      go list -m github.com:erhanakp/sugaredgorm@#{current_git_tag} &&
       echo "[->] [#{current_git_tag}] has been published" &&
       git push origin #{current_branch} &&
       echo "[->] code pushed to: [#{current_branch}] branch (updated)"
