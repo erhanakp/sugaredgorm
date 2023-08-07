@@ -2,8 +2,8 @@
 ![Go](https://img.shields.io/github/go-mod/go-version/erhanakp/sugaredgorm)
 [![Documentation](https://godoc.org/github.com/erhanakp/sugaredgorm?status.svg)](https://pkg.go.dev/github.com/erhanakp/sugaredgorm)
 [![Go Report Card](https://goreportcard.com/badge/github.com/erhanakp/sugaredgorm)](https://goreportcard.com/report/github.com/erhanakp/sugaredgorm)
-![Go Build Status](https://github.com/erhanakp/sugaredgorm/actions/workflows/go.yml/badge.svg)
-![GolangCI-Lint Status](https://github.com/erhanakp/sugaredgorm/actions/workflows/golang-lint.yml/badge.svg)
+![Go Build Status](https://github.com/erhanakp/sugaredgorm/actions/workflows/go-test.yml/badge.svg)
+![GolangCI-Lint Status](https://github.com/erhanakp/sugaredgorm/actions/workflows/go-lint.yml/badge.svg)
 [![codecov](https://codecov.io/gh/erhanakp/sugaredgorm/branch/main/graph/badge.svg?token=BTVK8VKVZM)](https://codecov.io/gh/erhanakp/sugaredgorm)
 
 # Sugared Gorm
