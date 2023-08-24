@@ -36,20 +36,20 @@ go install golang.org/x/tools/cmd/godoc@latest
 ## Usage:
   
 ```go
-	zap := zap.NewExample()
+zap := zap.NewExample()
 
-	gormLoggerValue := sugaredgorm.New(zap.Sugar(), sugaredgorm.Config{
-		SlowThreshold:             200 * time.Millisecond,
-		Colorful:                  true,
-		IgnoreRecordNotFoundError: true,
-		ParameterizedQueries:      true,
-	})
+gormLoggerValue := sugaredgorm.New(zap.Sugar(), sugaredgorm.Config{
+	SlowThreshold:             200 * time.Millisecond,
+	Colorful:                  true,
+	IgnoreRecordNotFoundError: true,
+	ParameterizedQueries:      true,
+})
 
-	_, err := gorm.Open(postgres.New(postgres.Config{
-		DSN: "host=localhost",
-	}), &gorm.Config{
-		Logger: gormLoggerValue,
-	})
+_, err := gorm.Open(postgres.New(postgres.Config{
+	DSN: "host=localhost",
+}), &gorm.Config{
+	Logger: gormLoggerValue,
+})
 ```
 
 ---
